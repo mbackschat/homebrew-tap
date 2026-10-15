@@ -1,7 +1,7 @@
 class Locmetry < Formula
   desc "Measure code with embedded Tokei and reviewed classification rules"
   homepage "https://github.com/mbackschat/locmetry"
-  version "0.1.0"
+  version "0.1.1"
   license any_of: ["MIT", "Apache-2.0"]
 
   head do
@@ -13,19 +13,19 @@ class Locmetry < Formula
   # macOS arm64 and Linux x86_64 and aarch64 only.
   on_macos do
     on_arm do
-      url "https://github.com/mbackschat/locmetry/releases/download/v0.1.0/locmetry-v0.1.0-aarch64-apple-darwin.tar.gz"
-      sha256 "4fc776e0119f570307caf94760600beca42b5ad7eeca0ea358c0422fe29357b3"
+      url "https://github.com/mbackschat/locmetry/releases/download/v0.1.1/locmetry-v0.1.1-aarch64-apple-darwin.tar.gz"
+      sha256 "54dfc2a13d492ff527d07cdc4c30aab630e30dda8fbbb5682a4e7af3db0f660b"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/mbackschat/locmetry/releases/download/v0.1.0/locmetry-v0.1.0-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "6f96552423f830e8bf2a5157e3770bd4749f1d56808c1381076b73dc947310a9"
+      url "https://github.com/mbackschat/locmetry/releases/download/v0.1.1/locmetry-v0.1.1-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "e1f55f4ab3bf4df922d9d224b2c0bd7dce45cfae9ddc51b9dc4f0fab3fc7e307"
     end
     on_arm do
-      url "https://github.com/mbackschat/locmetry/releases/download/v0.1.0/locmetry-v0.1.0-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "798cf889530239873403c635c1648620b92d5edb1462c25c33a2c5cddf13b2c5"
+      url "https://github.com/mbackschat/locmetry/releases/download/v0.1.1/locmetry-v0.1.1-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "4821298f49018b04124b23e059537adc1ce094174c363e0e511094a3a9d7f8d9"
     end
   end
 
