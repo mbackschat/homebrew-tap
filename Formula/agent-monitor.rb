@@ -1,8 +1,8 @@
 class AgentMonitor < Formula
   desc "Trace heavy CPU and memory usage to coding-agent sessions"
   homepage "https://github.com/mbackschat/agent-monitor"
-  url "https://github.com/mbackschat/agent-monitor/releases/download/v0.2.2/agent-monitor-0.2.2-macos-arm64.tar.gz"
-  sha256 "0aa354bd690d8477c0ea2495490801d981cd109eee116f067bd401823e6d2ed0"
+  url "https://github.com/mbackschat/agent-monitor/releases/download/v0.3.0/agent-monitor-0.3.0-macos-arm64.tar.gz"
+  sha256 "b157c02ac6c5c256c41bccbb3a45880099781bebd166eaf05dbc9f50072be9f2"
   license "MIT"
 
   depends_on arch: :arm64
