@@ -1,7 +1,7 @@
 class Locmetry < Formula
   desc "Measure source code by language, folder, and purpose"
   homepage "https://github.com/mbackschat/locmetry"
-  version "0.5.0"
+  version "0.5.1"
   license "MIT"
 
   head do
@@ -13,19 +13,19 @@ class Locmetry < Formula
   # macOS arm64 and Linux x86_64 and aarch64 only.
   on_macos do
     on_arm do
-      url "https://github.com/mbackschat/locmetry/releases/download/v0.5.0/locmetry-v0.5.0-aarch64-apple-darwin.tar.gz"
-      sha256 "dee877a755d486eb39798bfae1539770abafea668f0503c2b7068707ff0813fd"
+      url "https://github.com/mbackschat/locmetry/releases/download/v0.5.1/locmetry-v0.5.1-aarch64-apple-darwin.tar.gz"
+      sha256 "f059b2ad70fa81a5e96034228d080f71b0d42dfae2ff90752e36652f534e0239"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/mbackschat/locmetry/releases/download/v0.5.0/locmetry-v0.5.0-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "3180f683148b1e99bc9cd1ad50de19228616643f92351b3d8f0df5785020827c"
+      url "https://github.com/mbackschat/locmetry/releases/download/v0.5.1/locmetry-v0.5.1-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "cfdb43e4cc3f01785e1ea83ab0261230e9c506df824f0ea015bb0b55a9404b10"
     end
     on_arm do
-      url "https://github.com/mbackschat/locmetry/releases/download/v0.5.0/locmetry-v0.5.0-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "5a3bcfb4665ddb672ddd52548f80f72ed0529457e1a085c50862a79e9e726bc9"
+      url "https://github.com/mbackschat/locmetry/releases/download/v0.5.1/locmetry-v0.5.1-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "19535857ec0db97900b43809d78b6c9c12fd8ba28e05503ca2c57954f5eb3593"
     end
   end
 
