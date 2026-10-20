@@ -1,7 +1,7 @@
 class Locmetry < Formula
   desc "Measure source code by language, folder, and purpose"
   homepage "https://github.com/mbackschat/locmetry"
-  version "0.7.0"
+  version "0.7.3"
   license "MIT"
 
   head do
@@ -13,27 +13,28 @@ class Locmetry < Formula
   # macOS arm64 and Linux x86_64 and aarch64 only.
   on_macos do
     on_arm do
-      url "https://github.com/mbackschat/locmetry/releases/download/v0.7.0/locmetry-v0.7.0-aarch64-apple-darwin.tar.gz"
-      sha256 "33b6406bb67286b759a0722f53143c7089d26a2937e2ed7066b6e3280e8d25d2"
+      url "https://github.com/mbackschat/locmetry/releases/download/v0.7.3/locmetry-v0.7.3-aarch64-apple-darwin.tar.gz"
+      sha256 "55f5d1cce722d1610fba86e63e286866815a6910c5c370e47d19ffe177cce641"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/mbackschat/locmetry/releases/download/v0.7.0/locmetry-v0.7.0-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "ed64e935d224dfe6752df53d554c25648617f31fae8aa920ee86d790de9eec43"
+      url "https://github.com/mbackschat/locmetry/releases/download/v0.7.3/locmetry-v0.7.3-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "37aa005860afc165f4b38bf433a4202c30bd3219fb48454b0a0ad0e7cf389385"
     end
     on_arm do
-      url "https://github.com/mbackschat/locmetry/releases/download/v0.7.0/locmetry-v0.7.0-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "c1b43bc5e5bc8c7b088610eeb3d1cc03a74722276c2426af3feb8c7f11e91780"
+      url "https://github.com/mbackschat/locmetry/releases/download/v0.7.3/locmetry-v0.7.3-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "9ab7c8dc679526bcfac69c8905f3189488ea6428c84c42726ac827c87e0835fe"
     end
   end
 
   def install
     if build.head?
       system "cargo", "install", *std_cargo_args
+      bin.install "scripts/compare-locmetry-files.sh"
     else
-      bin.install "locmetry"
+      bin.install "locmetry", "compare-locmetry-files.sh"
       prefix.install "THIRD-PARTY-NOTICES.md"
     end
   end
@@ -56,5 +57,10 @@ class Locmetry < Formula
     assert_equal 3, purposes["production"]["code"]
     assert_equal 4, purposes["test"]["code"]
     refute purposes.key?("other")
+    assert_match "Usage: compare-locmetry-files.sh", shell_output("#{bin}/compare-locmetry-files.sh --help")
+    error = with_env(PATH: "") do
+      shell_output("/bin/bash #{bin}/compare-locmetry-files.sh before.json after.json 2>&1", 1)
+    end
+    assert_match "brew install jq", error
   end
 end
