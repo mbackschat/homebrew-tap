@@ -22,7 +22,7 @@ The formula verifies the release archive's SHA-256 checksum and installs the exe
 
 ## locmetry
 
-[locmetry](https://github.com/mbackschat/locmetry) measures lines of code with embedded Tokei and classifies every file as production, test, or unclassified by reviewable project rules.
+[locmetry](https://github.com/mbackschat/locmetry) measures lines of code with embedded Tokei and classifies every file as production, test, or other by reviewable project rules.
 
 Requires macOS on Apple Silicon or Linux on x86_64 or aarch64. Install the prebuilt release without a Rust toolchain:
 
