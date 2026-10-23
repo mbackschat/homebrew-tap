@@ -14,18 +14,18 @@ class Locmetry < Formula
   on_macos do
     on_arm do
       url "https://github.com/mbackschat/locmetry/releases/download/v0.10.0/locmetry-v0.10.0-aarch64-apple-darwin.tar.gz"
-      sha256 "ec5fb65dc3a6eb47366070f99970796dcde41f4acd7ac1c7ace59311403021f4"
+      sha256 "5810022ce90059f750fed329683029fd31fac8588b790dac697aa910d05b8059"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/mbackschat/locmetry/releases/download/v0.10.0/locmetry-v0.10.0-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "ad023ecd08dc94450c0447fb259cba3868fd2c5edcbda1a3dc570f36d97e5e9c"
+      sha256 "be5e976f7d71673970fce707412024e9e8f92c1464577dc20c63d978652984be"
     end
     on_arm do
       url "https://github.com/mbackschat/locmetry/releases/download/v0.10.0/locmetry-v0.10.0-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "b04f3da879a543ae6514d91992aebdad4cbcd1bad87396553bb893f2bbc288e2"
+      sha256 "b86f83a1d03144ad7d2ad7e05ad16d2739b98f120611064e6bfd15f9dbb4cdbf"
     end
   end
 
