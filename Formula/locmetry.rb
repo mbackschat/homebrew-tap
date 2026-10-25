@@ -1,7 +1,7 @@
 class Locmetry < Formula
   desc "Measure source code by language, folder, and purpose"
   homepage "https://github.com/mbackschat/locmetry"
-  version "0.10.0"
+  version "0.11.0"
   license "MIT"
 
   head do
@@ -13,19 +13,19 @@ class Locmetry < Formula
   # macOS arm64 and Linux x86_64 and aarch64 only.
   on_macos do
     on_arm do
-      url "https://github.com/mbackschat/locmetry/releases/download/v0.10.0/locmetry-v0.10.0-aarch64-apple-darwin.tar.gz"
-      sha256 "5810022ce90059f750fed329683029fd31fac8588b790dac697aa910d05b8059"
+      url "https://github.com/mbackschat/locmetry/releases/download/v0.11.0/locmetry-v0.11.0-aarch64-apple-darwin.tar.gz"
+      sha256 "c75d4b42a2f61d0a526e33adb59cd0e7fc88f524c8b69ebda66c909d3e0cafeb"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/mbackschat/locmetry/releases/download/v0.10.0/locmetry-v0.10.0-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "be5e976f7d71673970fce707412024e9e8f92c1464577dc20c63d978652984be"
+      url "https://github.com/mbackschat/locmetry/releases/download/v0.11.0/locmetry-v0.11.0-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "2c6e82fba2d952e9c3e77780b82427730e07d29f978834e935211eabf7b39b8e"
     end
     on_arm do
-      url "https://github.com/mbackschat/locmetry/releases/download/v0.10.0/locmetry-v0.10.0-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "b86f83a1d03144ad7d2ad7e05ad16d2739b98f120611064e6bfd15f9dbb4cdbf"
+      url "https://github.com/mbackschat/locmetry/releases/download/v0.11.0/locmetry-v0.11.0-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "0abd4cfe8232dcc9f37977894667523519daa114aea79b914bbe55ce9281a26d"
     end
   end
 
@@ -37,6 +37,11 @@ class Locmetry < Formula
       bin.install "locmetry", "compare-locmetry-files.sh"
       prefix.install "THIRD-PARTY-NOTICES.md"
     end
+    # From the installed binary, so they match its version; PowerShell is left
+    # out because the helper would ask for a complete-pwsh kind.
+    generate_completions_from_executable(bin/"locmetry", "--generate",
+                                         shells: [:bash, :zsh, :fish], shell_parameter_format: "complete-")
+    (man1/"locmetry.1").write Utils.safe_popen_read(bin/"locmetry", "--generate", "man")
   end
 
   test do
@@ -57,6 +62,8 @@ class Locmetry < Formula
     assert_equal 3, purposes["production"]["code"]
     assert_equal 4, purposes["test"]["code"]
     refute purposes.key?("other")
+    assert_match "locmetry", (man1/"locmetry.1").read
+    assert_match "--show-folders", (bash_completion/"locmetry").read
     assert_match "Usage: compare-locmetry-files.sh", shell_output("#{bin}/compare-locmetry-files.sh --help")
     error = with_env(PATH: "") do
       shell_output("/bin/bash #{bin}/compare-locmetry-files.sh before.json after.json 2>&1", 1)
