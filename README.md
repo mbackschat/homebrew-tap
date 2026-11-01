@@ -20,6 +20,19 @@ brew upgrade agent-monitor
 
 The formula verifies the release archive's SHA-256 checksum and installs the executable with its schema resource bundle. Releases are ad-hoc signed, not notarized. See the [installation guide](https://github.com/mbackschat/agent-monitor/blob/main/docs/installation.md) for alternatives.
 
+## dmtool
+
+[dmtool](https://github.com/mbackschat/a12-dmtool-releases) inspects, validates, and edits A12 DocumentModels. Requires Apple Silicon with **macOS 27 or later**, or Linux x64/ARM64 with the release binary's runtime requirements.
+
+```sh
+brew install mbackschat/tap/dmtool
+dmtool --version
+```
+
+Update with `brew update` and `brew upgrade dmtool`. No JVM is required. The formula verifies the binary and notice archive checksums and installs the EUPL-1.2 bundle notices under `$(brew --prefix dmtool)/share/dmtool`.
+
+Maintainers generate [the formula](Formula/dmtool.rb) with `scripts/run-typescript.sh "dmtool packages" scripts/typescript/dmtool-packages.ts VERSION build/packages` in the dmtool source repository after publication. Run `brew audit --strict mbackschat/tap/dmtool`, install/reinstall, and `brew test mbackschat/tap/dmtool` before publishing an update.
+
 ## locmetry
 
 [locmetry](https://github.com/mbackschat/locmetry) measures lines of code with embedded Tokei and classifies every file as production, test, or other by reviewable project rules.
