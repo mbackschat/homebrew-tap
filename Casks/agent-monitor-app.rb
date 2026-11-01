@@ -1,6 +1,6 @@
 cask "agent-monitor-app" do
-  version "0.4.0"
-  sha256 "ab1f66756125430632c78e76040d0dadbd2413a81fe584aed490cfa897370dec"
+  version "0.4.1"
+  sha256 "9fdd6a9eb3b86233b6424ef095f39a449210f02039e892df7c88f51d1c67b863"
 
   url "https://github.com/mbackschat/agent-monitor/releases/download/v#{version}/agent-monitor-app-#{version}-macos-arm64.zip"
   name "Agent Monitor"
