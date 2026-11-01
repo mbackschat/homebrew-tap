@@ -2,23 +2,16 @@
 
 ## Agent Monitor
 
-[Agent Monitor](https://github.com/mbackschat/agent-monitor) traces heavy CPU and memory usage to Codex CLI and Claude Code sessions on macOS.
+[Agent Monitor](https://github.com/mbackschat/agent-monitor) shows which coding agents, sessions and processes consume CPU and memory, with their working directories. Requires Apple Silicon and macOS 27 or later; release downloads need no Xcode.
 
-Requires Apple Silicon and macOS 27 or later. Install the prebuilt release without Xcode:
+| Interface | Install | Start |
+| --- | --- | --- |
+| CLI and terminal dashboard | `brew install mbackschat/tap/agent-monitor` | `agent-monitor --tui` |
+| Mac menu bar app | `brew install --cask mbackschat/tap/agent-monitor-app` | Open **Agent Monitor** from Applications. |
 
-```sh
-brew install mbackschat/tap/agent-monitor
-agent-monitor --tui --group session
-```
+Install either or both. The formula installs the CLI and its schema bundle; the cask installs only the Developer ID-signed, notarized app. Both verify release checksums. The CLI archive remains ad-hoc signed.
 
-Update with:
-
-```sh
-brew update
-brew upgrade agent-monitor
-```
-
-The formula verifies the release archive's SHA-256 checksum and installs the executable with its schema resource bundle. Releases are ad-hoc signed, not notarized. See the [installation guide](https://github.com/mbackschat/agent-monitor/blob/main/docs/installation.md) for alternatives.
+Update installed packages with `brew update`, then `brew upgrade agent-monitor` and/or `brew upgrade --cask agent-monitor-app`. Quit the Mac app before upgrading it. See the [installation guide](https://github.com/mbackschat/agent-monitor/blob/main/docs/installation.md) for downloads and source builds.
 
 ## dmtool
 
@@ -55,7 +48,7 @@ The formula verifies the release archive's SHA-256 checksum. `brew install --HEA
 
 ## Maintaining the formula
 
-For a new release, update the versioned archive URL and SHA-256 in [the formula](Formula/agent-monitor.rb). Run `brew audit --strict mbackschat/tap/agent-monitor`, install or upgrade the formula, and run `brew test mbackschat/tap/agent-monitor` before pushing. The tests check the installed version and schema discovery through the public command.
+For an Agent Monitor release, run `python3 scripts/update-homebrew.py VERSION` from its source repository after publishing the GitHub release. The helper updates [the CLI formula](Formula/agent-monitor.rb) and [the Mac cask](Casks/agent-monitor-app.rb), audits both recipes, tests the installed CLI, and verifies the cask download’s version, signature, notarization ticket and Gatekeeper acceptance before pushing. Follow the [release guide](https://github.com/mbackschat/agent-monitor/blob/main/docs/releasing.md) for preparation and recovery.
 
 For a new locmetry release, render [its formula](Formula/locmetry.rb) with `packaging/homebrew/render-formula.sh VERSION` from the locmetry repository, which fills the URLs and checksums from the release's `SHA256SUMS`. Run `brew style`, install or upgrade, and run `brew test mbackschat/tap/locmetry` before pushing; the test measures a synthetic project with an empty `PATH`.
 
