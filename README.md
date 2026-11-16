@@ -46,6 +46,19 @@ brew upgrade locmetry
 
 The formula verifies the release archive's SHA-256 checksum. `brew install --HEAD mbackschat/tap/locmetry` builds the main branch from source with Rust as a build-only dependency.
 
+## mdrun
+
+[mdrun](https://github.com/mbackschat/mdrun) records and verifies executable Markdown, with cooperative JVM, Node.js and Python workers that reuse application startup.
+
+Requires macOS on Apple Silicon or Linux on x86_64 or ARM64. Install the prebuilt host without a Rust toolchain:
+
+```sh
+brew install mbackschat/tap/mdrun
+mdrun --help
+```
+
+The formula verifies the release archive checksum and installs offline manuals and license notices. Worker applications need their own runtimes and adapters; see the [warm execution guide](https://github.com/mbackschat/mdrun/blob/main/docs/guides/sessions.md). Update with `brew update` and `brew upgrade mdrun`.
+
 ## Maintaining the formula
 
 For an Agent Monitor release, run `python3 scripts/update-homebrew.py VERSION` from its source repository after publishing the GitHub release. The helper updates [the CLI formula](Formula/agent-monitor.rb) and [the Mac cask](Casks/agent-monitor-app.rb), audits both recipes, tests the installed CLI, and verifies the cask download’s version, signature, notarization ticket and Gatekeeper acceptance before pushing. Follow the [release guide](https://github.com/mbackschat/agent-monitor/blob/main/docs/releasing.md) for preparation and recovery.
